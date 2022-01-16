@@ -29,7 +29,7 @@ set nois
 filetype on
 filetype indent on
 filetype plugin on
-let &t_ut='i'
+let &t_ut=''
 set list
 set listchars=tab:▸\ ,trail:▫
 set expandtab
