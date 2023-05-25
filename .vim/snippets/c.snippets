@@ -1,0 +1,42 @@
+snippet fh
+	/**
+	 *
+	 * @func  : ${1}
+	 *
+	 * @desc  : ${2}
+	 *
+	 * @param : ${3}
+	 *
+	 * @ret   : ${4: 0: ok}
+	 *          ${5:-1: err}
+	 *
+	 */${6}
+
+snippet Inc
+	#include <${1}.h>
+snippet inc
+	#include "${1}.h"
+snippet if
+	if (${1}) {
+		${2}
+	}
+snippet elif
+	else if (${1}) {
+		${2}
+	}
+snippet else
+	else {
+		${1}
+	}
+snippet while
+	while (${1}) {
+		${2}
+	}
+snippet for
+	for (${1}; ${2}; ${3}) {
+		${4}
+	}
+snippet do
+	do {
+		${1}
+	} while (${2});
