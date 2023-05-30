@@ -1,4 +1,4 @@
-- 先执行build.sh
+- 先执行install.sh
 - 查看是否安装Vundle, 若无则安装
 
   `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
