@@ -15,15 +15,31 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
 "Plugin 'preservim/nerdtree'
 "Plugin 'xuyuanp/nerdtree-git-plugin'
+
+"Jeffy Du plugin
+Plugin 'ZoomWin'
+Plugin 'taglist.vim'
+Plugin 'ervandew/supertab'
+Plugin 'msanders/snipmate.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'yegappan/mru'
+Plugin 'lookupfile'
+Plugin 'GetLatestVimScripts'
+Plugin 'genutils'
+Plugin 'mbbill/echofunc'
+Plugin 'bufexplorer.zip'
+Plugin 'AutoComplPop'
 
 call vundle#end()
 filetype plugin indent on
 syntax on
 
 " Setting colorscheme
-color mycolor
+" color mycolor
 " Other settings.
 set   autoindent
 set   autoread
@@ -145,9 +161,9 @@ let g:LookupFile_AllowNewFiles=0
 " Man.vim
 source $VIMRUNTIME/ftplugin/man.vim
 " snipMate
-let g:snips_author="Du Jianfeng"
-let g:snips_email="cmdxiaoha@163.com"
-let g:snips_copyright="SicMicro, Inc"
+"let g:snips_author="Du Jianfeng"
+"let g:snips_email="cmdxiaoha@163.com"
+"let g:snips_copyright="SicMicro, Inc"
 " plugin shortcuts
 function! RunShell(Msg, Shell)
 	echo a:Msg . '...'
@@ -155,7 +171,7 @@ function! RunShell(Msg, Shell)
 	echon 'done'
 endfunction
 nmap  <F2> :TlistToggle<cr>
-nmap  <F3> :NERDTreeToggle<cr>
+nmap  <F3> :NERDTreeToggle<CR>
 nmap  <F4> :MRU<cr>
 nmap  <F5> <Plug>LookupFile<cr>
 nmap  <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
@@ -412,3 +428,12 @@ nmap [c <Plug>(GitGutterPrevHunk)
 "let g:NERDTreeGitStatusUseNerdFonts = 1
 "let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 "let g:NERDTreeGitStatusShowClean = 1
+
+" ===
+" === acp
+" ===
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+augroup complete
+	autocmd!
+	autocmd CompleteDone * pclose
+augroup end
