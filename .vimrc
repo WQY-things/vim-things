@@ -1,7 +1,7 @@
 "set runtimepath=/home/wangqingyi/.vim/,/home/wangqingyi/.vim/after,/usr/share/vim/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/usr/share/vim/.vim/after
 "set rtp+=/home/wangqingyi/.vim/,/home/wangqingyi/.vim/after
 set runtimepath=/usr/share/vim/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/usr/share/vim/.vim/after
-set rtp+=$HOME/.vim/,$HOME/.vim/after
+set rtp+=HOME/.vim/,HOME/.vim/,HOME/.vim/after
 
 set nocompatible
 filetype off
@@ -203,6 +203,10 @@ map ta :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "==========================================================
 "=================my personal configure====================
 "==========================================================
+
+"取消注释行回车自动形成注释行
+set fo-=r
+
 set mouse=
 
 set autoindent
