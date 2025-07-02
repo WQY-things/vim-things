@@ -1,7 +1,7 @@
 "set runtimepath=/home/wangqingyi/.vim/,/home/wangqingyi/.vim/after,/usr/share/vim/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/usr/share/vim/.vim/after
 "set rtp+=/home/wangqingyi/.vim/,/home/wangqingyi/.vim/after
-set runtimepath=/usr/share/vim/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/usr/share/vim/.vim/after
-set rtp+=HOME/.vim/,HOME/.vim/,HOME/.vim/after
+set runtimepath=/usr/share/vim/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/usr/share/vim/.vim/after
+set rtp+=$HOME/.vim/,$HOME/.vim/after
 
 set nocompatible
 filetype off
@@ -196,6 +196,8 @@ set noswapfile
 set tags+=/usr/include/tags
 set tags+=/usr/src/tags
 set tags+=~/.tags
+set tags+=~/source/glibc-2.19/tags
+set tags+=~/source/gcc-7.5.0/tags
 map ta :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 
@@ -226,7 +228,7 @@ let &t_ut='i'
 set list
 "set listchars=tab:▸\ ,trail:▫
 set listchars=tab:▶\ ,trail:□
-" set expandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -279,13 +281,13 @@ set diffopt+=iwhite
 "tags
 " set tags+=~/git_products_0/app/tags
 " set tags+=~/git_products_0/lib/tags
-set tags+=~/git_products_0/tags
+"set tags+=~/git_products_0/tags
 
 "snipMate, deal suptab's tab key conflict
 let g:SuperTabMappingForward="<c-space>"
 let g:snippets_dir="~/.vim/snippets/"
-let g:snips_author="Wangqingyi"
-let g:snips_email="qywang@cloudpick.me"
+let g:snips_author="WangQingyi"
+let g:snips_email="wangqingyi@chemclin.com"
 let g:snips_copyright="CloudPick, Inc"
 
 " cscope.vim
@@ -319,7 +321,8 @@ noremap <LEADER><CR> :nohlsearch<CR>
 map s <nop>
 map S :w<CR>
 map Q :q<CR>
-map <leader>vm :source $MYVIMRC<CR>
+nmap <leader>ve :e $MYVIMRC<CR>
+nmap <leader>vr :source $MYVIMRC<CR>
 map <space> :
 "map ; :
 
@@ -341,17 +344,20 @@ map <left> :vertical resize -5<CR>
 map <right> :vertical resize +5<CR>
 
 "tab
-map tu :tabe<CR>
-map th :tabp<CR>
-map tl :tabn<CR>
+map te :tabe<CR>
+map tp :tabp<CR>
+map tn :tabn<CR>
 "Close all other tab pages
-map tc :tabo<CR>
+map to :tabo<CR>
 
-map ta <nop>
-nmap <F9> <nop>
-nmap <F9> :call RunShell("Generate tags", "ctags -f ~/git_products_0/tags -R --c++-kinds=+p --fields=+iaS --extra=+q ~/git_products_0/")<cr>
-nmap <F12> <nop>
-nmap <F12> :call RunShell("Generate cscope", "cscope -Rb -f ~/git_products_0/cscope.out -P ~/git_products_0/")<cr>:cs add ~/git_products_0/cscope.out<cr>
+map bp :bp<CR>
+map bn :bn<CR>
+
+" map ta <nop>
+"nmap <F9> <nop>
+"nmap <F9> :call RunShell("Generate tags", "ctags -f ~/git_products_0/tags -R --c++-kinds=+p --fields=+iaS --extra=+q ~/git_products_0/")<cr>
+"nmap <F12> <nop>
+"nmap <F12> :call RunShell("Generate cscope", "cscope -Rb -f ~/git_products_0/cscope.out -P ~/git_products_0/")<cr>:cs add ~/git_products_0/cscope.out<cr>
 nmap <leader>sa :cs add cscope.out<cr>
 
 "Press <LEADER> twice to jump to the next '<++>' and edit it
@@ -362,6 +368,10 @@ map ` ~
 
 "m is conflict with vim-man before
 "map m <Esc>:mark 
+
+autocmd BufNewFile,BufRead *.log set filetype=mylog
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " ===
 " === snazzy
@@ -441,3 +451,9 @@ augroup complete
 	autocmd!
 	autocmd CompleteDone * pclose
 augroup end
+
+" ===
+" === auto-pairs
+" ===
+let g:AutoPairsShortcutJump = '<leader>n'
+let g:AutoPairsShortcutFastWrap = '<leader>e'
